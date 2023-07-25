@@ -8,10 +8,8 @@ readme = "README.md"
 panic-halt = "0.2"
 cortex-m = "0.7.4"
 cortex-m-rt = "0.7.3"
-stm32l4xx-hal = { version = "0.7.1", features = ["rt", "stm32l4x2"] }
+stm32l4xx-hal = { version = "0.7.1", features = ["rt", "stm32l432"] }
 
 # dev
 panic-semihosting = "0.5"
 cortex-m-semihosting = "0.3"
-
-# cortex-m-rtic = "1.1.4"
