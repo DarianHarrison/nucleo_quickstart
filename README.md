@@ -31,16 +31,35 @@ cargo install cargo-binutils
 rustup component add llvm-tools-preview
 ```
 
- cargo-generate
+ (optional) cargo-generate
 ```bash
 sudo apt install -y libssl-dev pkg-config # prereqs for cargo-generate
 cargo install cargo-generate
 ```
 
- GDB Debugger
+
+
+### 1. Setup
+
+ 0. tools 
 ```bash
-sudo apt-get install -y  gdb-multiarch openocd
+sudo apt-get install -y gdb-multiarch openocd
 ```
+
+
+ 1. verify supported interfaces & targets (installed with above command)
+```bash
+ls /usr/share/openocd/scripts/
+```
+
+ 2.  udev rules
+
+find idVendor & idProduct (assuming you're connected via usb)
+```
+lsusb | grep -i st
+```
+Bus 001 Device 023: ID 0483:374b STMicroelectronics ST-LINK/V2.1
+
 
 on linux: This rule lets you use OpenOCD with the Discovery board without root privilege.
 ```bash
@@ -49,36 +68,39 @@ sudo sh -c 'cat << 'EOF' > /etc/udev/rules.d/70-st-link.rules
 ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", TAG+="uaccess"
 EOF'
 ```
-reload all udev rules
+
 ```bash
 sudo udevadm control --reload-rules
 ```
-If you had the board plugged to your laptop, unplug it and then plug it again.
 
+ verify
 
-validate
-```bash
-lsusb | grep -i stm
-ls -l /dev/bus/usb/002/014
 ```
-
-```bash
-cargo clean ; cargo build --example hello
+plug board back out and back in
 ```
-
-
-scripted
-
 ```bash
-gdb-multiarch -x openocd.gdb target/thumbv7em-none-eabihf/debug/examples/hello
+ls -l /dev/bus/usb/001/026 # should be crw-rw-rw-
+```
+crw-rw-rw-+ 1 root plugdev 189, 25 Mar  8 06:36 /dev/bus/usb/001/026
 
-target extended-remote :3333
+
+
+ 3. connect and verify (uses files from the above scripts path)
+```bash
+openocd -s /usr/share/openocd/scripts/ -f interface/stlink.cfg -f target/stm32f3x.cfg
 ```
 
 
- scripted
+ 2. Scripted
+
+make sure you have debug on first terminal
 ```bash
-openocd -f interface/stlink.cfg -f target/stm32f3x.cfg
+opencd
+```
+on second terminal
+```bash
+# cargo clean # optional
+cargo build ; cargo run
 ```
 
 
@@ -86,3 +108,8 @@ all gdb functions
 ```
 https://docs.rust-embedded.org/discovery/f3discovery/appendix/2-how-to-use-gdb/index.html
 ```
+
+
+
+
+
