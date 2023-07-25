@@ -86,7 +86,7 @@ crw-rw-rw-+ 1 root plugdev 189, 25 Mar  8 06:36 /dev/bus/usb/001/026
 
  3. connect and verify (uses files from the above scripts path)
 ```bash
-openocd -s /usr/share/openocd/scripts/ -f interface/stlink.cfg -f target/stm32f3x.cfg
+openocd -s /usr/share/openocd/scripts/ -f interface/stlink.cfg -f target/stm32l4x.cfg
 ```
 
 
@@ -94,7 +94,7 @@ openocd -s /usr/share/openocd/scripts/ -f interface/stlink.cfg -f target/stm32f3
 
 make sure you have debug on first terminal
 ```bash
-opencd
+opencod
 ```
 on second terminal
 ```bash
