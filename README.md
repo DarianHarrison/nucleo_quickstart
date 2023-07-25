@@ -1,6 +1,6 @@
 # nucleo
  
-6 3/4
+7 1/4
 
 
 sources:
