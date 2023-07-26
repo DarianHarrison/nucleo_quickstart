@@ -1,6 +1,6 @@
 # nucleo
  
-7 1/2
+6:00 - 
 
 
 sources:
