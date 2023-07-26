@@ -16,6 +16,11 @@ clear && cargo run --release --example blinky
 
 ## References
 
+board:
+![Alt Text](./docs/nucleo_l432kc.png)
+
+
+
 crates:
 https://crates.io/crates/stm32l4xx-hal
 
