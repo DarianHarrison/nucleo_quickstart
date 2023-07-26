@@ -43,13 +43,10 @@ break HardFault
 # detect unhandled exceptions, hard faults and panics
 break rust_begin_unwind
 
-# *try* to stop at the user entry point (it might be gone due to inlining)
-# break main
-
 # Continue running until we hit the main breakpoint
 continue
 
 # Step from the trampoline code in entry into main
 step
 
-# quit
+quit
