@@ -30,13 +30,6 @@ cargo install cargo-binutils
 rustup component add llvm-tools-preview
 ```
 
- (optional) cargo-generate
-```bash
-sudo apt install -y libssl-dev pkg-config # prereqs for cargo-generate
-cargo install cargo-generate
-```
-
-
 
 ### 1. Setup
 
@@ -44,7 +37,6 @@ cargo install cargo-generate
 ```bash
 sudo apt-get install -y gdb-multiarch openocd
 ```
-
 
  1. verify supported interfaces & targets (installed with above command)
 ```bash
@@ -57,7 +49,13 @@ find idVendor & idProduct (assuming you're connected via usb)
 ```
 lsusb | grep -i st
 ```
-Bus 001 Device 023: ID 0483:374b STMicroelectronics ST-LINK/V2.1
+Bus 001 Device 033: ID 0483:374b STMicroelectronics ST-LINK/V2.1
+
+```bash
+ls -l /dev/bus/usb/001/033
+```
+crw-rw-r--+ 1 root root 189, 32 Jul 26 06:09 /dev/bus/usb/001/033
+
 
 
 on linux: This rule lets you use OpenOCD with the Discovery board without root privilege.
@@ -73,22 +71,29 @@ sudo udevadm control --reload-rules
 ```
 
  verify
-
 ```
 plug board back out and back in
 ```
-```bash
-ls -l /dev/bus/usb/001/026 # should be crw-rw-rw-
+find idVendor & idProduct (assuming you're connected via usb)
+```sh
+lsusb | grep -i st
 ```
-crw-rw-rw-+ 1 root plugdev 189, 25 Mar  8 06:36 /dev/bus/usb/001/026
+Bus 001 Device 034: ID 0483:374b STMicroelectronics ST-LINK/V2.1
 
+```sh
+ls -l /dev/bus/usb/001/034
+```
+crw-rw----+ 1 root plugdev 189, 33 Jul 26 06:16 /dev/bus/usb/001/034
 
-
- 3. connect and verify (uses files from the above scripts path)
+ 3. connect and verify
 ```bash
 openocd -s /usr/share/openocd/scripts/ -f interface/stlink.cfg -f target/stm32l4x.cfg
 ```
 
+4. setup is validated, you can now exit
+```
+CTRL + C
+```
 
  2. Scripted
 
