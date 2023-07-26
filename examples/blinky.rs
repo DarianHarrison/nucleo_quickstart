@@ -23,8 +23,7 @@ use core::fmt::Write;
 #[entry]
 fn main() -> ! {
     let mut hstdout = hio::hstdout().unwrap();
-
-    writeln!(hstdout, "Hello, world 1").unwrap();
+    writeln!(hstdout, "console output enabled").unwrap();
 
     let cp = cortex_m::Peripherals::take().unwrap();
     let dp = hal::stm32::Peripherals::take().unwrap();
@@ -33,8 +32,8 @@ fn main() -> ! {
     let mut rcc = dp.RCC.constrain();
     let mut pwr = dp.PWR.constrain(&mut rcc.apb1r1);
 
-    writeln!(hstdout, "Hello, world 2").unwrap();
 
+    writeln!(hstdout, "clocks").unwrap();
     let clocks = rcc.cfgr
         .sysclk(64.MHz())
         .pclk1(32.MHz())
@@ -48,8 +47,7 @@ fn main() -> ! {
 
     let mut timer = Delay::new(cp.SYST, clocks);
 
-    writeln!(hstdout, "Hello, world 3").unwrap();
-
+    writeln!(hstdout, "main loop").unwrap();
     loop {
         // block!(timer.wait()).unwrap();
         timer.delay_ms(1000_u32);
