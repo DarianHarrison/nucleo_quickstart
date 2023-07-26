@@ -34,13 +34,9 @@ load
 # Set a breakpoint at main, aka entry
 break main
 
-# Set a breakpoint at DefaultHandler
-break DefaultHandler
-
-# Set a breakpoint at HardFault
-break HardFault
-
 # detect unhandled exceptions, hard faults and panics
+break DefaultHandler
+break HardFault
 break rust_begin_unwind
 
 # Continue running until we hit the main breakpoint

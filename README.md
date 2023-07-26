@@ -1,14 +1,10 @@
-# embedded_ml
+# nucleo_quickstart
  
-6:00 - 
-
-
-
 ## Debug
 
-0. make sure to follow setup prerequisites: [https://github.com/DarianHarrison/embedded_ml/docs/prerequisites.md](https://github.com/DarianHarrison/embedded_ml/blob/main/docs/prerequisites.md)
+0. make sure to follow setup prerequisites: [https://github.com/DarianHarrison/nucleo_quickstart/docs/prerequisites.md](https://github.com/DarianHarrison/nucleo_quickstart/blob/main/docs/prerequisites.md)
 
-1. make sure you have debug on first terminal, notice that it is taking the config from ```openocd.cfg``` file.
+1. make sure you have debug session on first terminal, notice that it is taking the config from ```openocd.cfg``` file.
 ```bash
 openocd
 ```
@@ -17,9 +13,6 @@ openocd
 ```bash
 clear && cargo run --release --example blinky
 ```
-
-
-
 
 ## References
 
