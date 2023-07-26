@@ -16,16 +16,20 @@ clear && cargo run --release --example blinky
 
 ## References
 
-board:
-![Alt Text](./docs/nucleo_l432kc.png)
-
-
-
 crates:
 https://crates.io/crates/stm32l4xx-hal
 
 datasheet:
 https://www.st.com/resource/en/datasheet/stm32l432kb.pdf
 
-all gdb functions:
+basic gdb functions:
 https://docs.rust-embedded.org/discovery/f3discovery/appendix/2-how-to-use-gdb/index.html
+
+gdb:
+https://www.sourceware.org/gdb/documentation/
+
+board:
+![Alt Text](./docs/nucleo_l432kc.png)
+
+
+
