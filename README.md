@@ -11,7 +11,7 @@ openocd
 
 2. on second terminal
 ```bash
-clear && cargo run --release --example blinky
+cargo run --release --example blinky
 ```
 
 ## References
