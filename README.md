@@ -99,12 +99,11 @@ CTRL + C
 
 make sure you have debug on first terminal
 ```bash
-opencod
+openocd
 ```
 on second terminal
 ```bash
-# cargo clean # optional
-cargo build ; cargo run
+clear && cargo run --release --example blinky
 ```
 
 

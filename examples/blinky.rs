@@ -24,7 +24,7 @@ use core::fmt::Write;
 fn main() -> ! {
     let mut hstdout = hio::hstdout().unwrap();
 
-    writeln!(hstdout, "Hello, world!").unwrap();
+    writeln!(hstdout, "Hello, world 1").unwrap();
 
     let cp = cortex_m::Peripherals::take().unwrap();
     let dp = hal::stm32::Peripherals::take().unwrap();
@@ -49,6 +49,9 @@ fn main() -> ! {
         .into_push_pull_output(&mut gpiob.moder, &mut gpiob.otyper);
 
     let mut timer = Delay::new(cp.SYST, clocks);
+
+    writeln!(hstdout, "Hello, world 2").unwrap();
+
     loop {
         // block!(timer.wait()).unwrap();
         timer.delay_ms(1000_u32);
